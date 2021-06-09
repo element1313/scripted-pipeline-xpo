@@ -33,6 +33,9 @@ node {
         stage("Install Pip3") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum –y install python3-pip'"
         }
+        stage("Creating symbolic link for pip") {
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo ln -s /usr/bin/pip /usr/local/bin/pip'"
+        }
         stage("Check installation of pip3") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo pip3 -V'"
         }

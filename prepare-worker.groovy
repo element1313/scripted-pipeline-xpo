@@ -25,22 +25,22 @@ node {
         //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'yum install -y yum-utils && yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && mv /usr/sbin/packer /usr/sbin/packer_original && yum -y install packer'"
         // }
         stage("update the yum package repository") {
-            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum makecache'"
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } sudo yum makecache"
         }
         stage("Install yum-utils") {
-            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install yum-utils -y'"
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } sudo yum install yum-utils -y"
         }
         // stage("add the IUS package repository") {
-        //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install https://centos7.iuscommunity.org/ius-release.rpm -y'"
+        //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } sudo yum install https://centos7.iuscommunity.org/ius-release.rpm -y"
         // }
         // stage("update the yum package repository") {
-        //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum makecache'"
+        //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } sudo yum makecache"
         // }
-        stage("Check installation of pip3") {
-            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install python34u python34u-pip -y'"
+        stage("Installing python3 pip3") {
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } sudo yum install python34u python34u-pip -y"
         }
         stage("Check installation of pip3.4") {
-            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'pip3.4 -V'"
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } pip3.4 -V"
         }
     }
 }

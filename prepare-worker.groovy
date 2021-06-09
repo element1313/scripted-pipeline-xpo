@@ -30,12 +30,12 @@ node {
         stage("Install yum-utils") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install yum-utils -y'"
         }
-        stage("add the IUS package repository") {
-            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install https://centos7.iuscommunity.org/ius-release.rpm -y'"
-        }
-        stage("update the yum package repository") {
-            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum makecache'"
-        }
+        // stage("add the IUS package repository") {
+        //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install https://centos7.iuscommunity.org/ius-release.rpm -y'"
+        // }
+        // stage("update the yum package repository") {
+        //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum makecache'"
+        // }
         stage("Check installation of pip3") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum install python34u python34u-pip -y'"
         }

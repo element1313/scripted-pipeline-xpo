@@ -24,6 +24,9 @@ node {
         // stage("Install Packer") {
         //     sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'yum install -y yum-utils && yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && mv /usr/sbin/packer /usr/sbin/packer_original && yum -y install packer'"
         // }
+        stage("Update system") {
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum update'"
+        }
         stage("Install Python3") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } 'sudo yum –y install python3'"
         }
